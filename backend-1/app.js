@@ -3,6 +3,7 @@ const cors = require("cors");
 const helmet = require("helmet")
 const config = require("./config/index")
 const loaders = require("./loaders");
+const {seriesRoutes} =require("./routes/index");
 
 config();
 loaders();
@@ -15,5 +16,8 @@ app.use(helmet());
 // API endpoints
 app.listen(process.env.APP_PORT, function () {
     console.log(">> Server is running (Port " + process.env.APP_PORT + ")");
+    app.use("/getlastest", seriesRoutes);
+    app.use("/getpopular",seriesRoutes);
+    
   });
   
