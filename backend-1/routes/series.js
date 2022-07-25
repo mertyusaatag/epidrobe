@@ -7,7 +7,7 @@ const view =require("../views/index")
 router.get("/", (req,res, next) => {
     axios.get(`https://api.themoviedb.org/3/tv/latest?api_key=8ef1582bce336c778e54d74f414322a7&language=en-US
     `).then(response => {
-        //console.log(response.data)
+        console.log(response.data)
         res.send(response.data)
     })
         .catch(err => next(err))
