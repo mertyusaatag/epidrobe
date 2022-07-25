@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const axios = require("axios");
+const view =require("../views/index")
 
 //get latest tv series
 router.get("/", (req,res, next) => {
@@ -29,6 +30,33 @@ router.get("/:pagenumber", (req, res, next) => {
         res.send(result)
     })
         .catch(err => next(err))
+
+        
+})
+
+router.get("/:tv_id", (req,res, next) => {
+    axios.get(`https://api.themoviedb.org/3/tv/${req.params.tv_id}/similar?api_key=<<api_key>>&language=en-US&page=1
+    `).then(response => {
+        //console.log(response.data)
+        res.send(response.data)
+    })
+        .catch(err => next(err))
+})
+
+router.get("/:tv_id", (req,res, next) => {
+    axios.get(`https://api.themoviedb.org/3/tv/${req.params.tv_id}/similar?api_key=<<api_key>>&language=en-US&page=1
+    `).then(response => {
+        //console.log(response.data)
+        res.send(response.data)
+    })
+        .catch(err => next(err))
+})
+
+router.get('/',(req,res,)=> {
+    res.render('index');
 })
 
 module.exports = router;
+
+
+//
